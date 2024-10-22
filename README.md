@@ -47,10 +47,10 @@ This project is licensed under the MIT License - see the [GNU](LICENSE) file for
 - Django for the web framework.
 
 Screenshots!!
-[Attack Detector Screenshot](https://github.com/CodexSpy/AttackDetector/blob/master/Screenshot%202024-10-22%20210536.png)
-[Attack Detector Screenshot](https://github.com/CodexSpy/AttackDetector/blob/master/Screenshot%202024-10-22%20210622.png)
-[Attack Detector Screenshot](https://github.com/CodexSpy/AttackDetector/blob/master/Screenshot%202024-10-22%20210530.png)
-[Attack Detector Screenshot](https://github.com/CodexSpy/AttackDetector/blob/master/Screenshot%202024-10-22%20210539.png)
+![Attack Detector Screenshot](https://github.com/CodexSpy/AttackDetector/blob/master/Screenshot%202024-10-22%20210536.png)
+![Attack Detector Screenshot](https://github.com/CodexSpy/AttackDetector/blob/master/Screenshot%202024-10-22%20210622.png)
+![Attack Detector Screenshot](https://github.com/CodexSpy/AttackDetector/blob/master/Screenshot%202024-10-22%20210530.png)
+![Attack Detector Screenshot](https://github.com/CodexSpy/AttackDetector/blob/master/Screenshot%202024-10-22%20210539.png)
 
 
 ---
