@@ -1,0 +1,195 @@
+{% extends 'RUser/design.html' %}
+{% block userblock %}
+
+<link rel="icon" href="images/icon.png" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: 'Jost', sans-serif;
+        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+        color: #fff;
+    }
+
+    .container-fluid {
+        padding: 50px;
+    }
+
+    .container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 5px 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .text-uppercase {
+        font-family: 'Righteous', cursive;
+        color: #573b8a;
+    }
+
+    .tweettext {
+        border: 2px solid yellowgreen;
+        width: 100%;
+        height: 202px;
+        overflow: scroll;
+    }
+
+    .style1 {
+        color: #573b8a;
+        font-weight: bold;
+        font-size: 1.8em;
+    }
+
+    .style6 {
+        font-size: 18px;
+        color: #9522f3;
+        font-weight: bold;
+    }
+
+    .style8 {
+        color: #573b8a;
+        font-weight: bold;
+    }
+
+    .style10 {
+        font-size: 18px;
+        color: #FF0000;
+        font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 1em;
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: #573b8a;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        background: #573b8a;
+        border: none;
+        color: #fff;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background: #6d44b8;
+    }
+
+    .header-text p {
+        color: #573b8a;
+        margin-bottom: 20px;
+        font-size: 1.5em;
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background: #ccc;
+        margin: 20px 0;
+    }
+
+    .form-container {
+        margin-bottom: 30px;
+    }
+
+    .form-container p {
+        margin-bottom: 10px;
+        font-size: 1.2em;
+    }
+
+    .result-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .result-container p {
+        margin-bottom: 10px;
+        font-size: 1.2em;
+    }
+
+    .result-container .style10 {
+        color: #08a8f3;
+        font-size: 20px;
+        font-family: fantasy;
+        font-weight: 200;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="header-text text-center">
+                <p class="text-uppercase style1">PREDICTION OF <span class="style10">FALSE DATA INJECTION ATTACK</span> !!!</p>
+                <hr>
+            </div>
+            <div class="form-container">
+                <form role="form" method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="text-center style8">ENTER DATASETS DETAILS HERE !!!</p>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <label class="style8" for="URLs">Enter URLs</label>
+                                <input type="text" name="URLs" id="URLs" value="" required>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <label class="style8" for="Headline">Enter Headline</label>
+                                <input type="text" name="Headline" id="Headline" required>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <label class="style8" for="Body">Enter Body</label>
+                                <textarea name="Body" id="Body" cols="25" rows="8" required></textarea>
+                            </div>
+                            <div class="col-md-12 form-group text-center">
+                                <input name="submit" type="submit" class="btn-primary" value="Predict">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <hr>
+            <div class="result-container">
+                <form role="form" method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-12 form-group text-center">
+                                <p class="style6">PREDICTED FALSE DATA INJECTION ATTACK DETECTION TYPE ::</p>
+                                <div class="style10">{{objs}}</div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Login</title>
+
+	<link rel="icon" href="images/icon.png" type="image/x-icon" />
+	<link href="https://fonts.googleapis.com/css?family=Jost" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	{% load static %}
+
+	<style>
+		  body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            background-color: #eee;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 5px 20px 50px #000;
+            padding: 30px;
+            text-align: center;
+            min-height: 400px; /* Ensure a minimum height */
+        }
+
+
+		#title {
+			color: #573b8a;
+			font-size: 1.8em;
+			font-weight: bold;
+		}
+
+		.style1 {
+			color: #5109af;
+			font-weight: bold;
+		}
+
+		.style2 {
+			font-family: 'Jost', sans-serif;
+			color: #6c0de9;
+			font-weight: bold;
+		}
+
+		.style5 {
+			color: #FF0099;
+			font-weight: bold;
+		}
+
+		input {
+			width: 80%;
+			height: 40px;
+			background: #e0dede;
+			margin: 10px 0;
+			padding: 10px;
+			border: none;
+			outline: none;
+			border-radius: 5px;
+		}
+
+		button {
+			width: 80%;
+			height: 40px;
+			margin: 10px 0;
+			color: #fff;
+			background: #573b8a;
+			font-size: 1em;
+			font-weight: bold;
+			outline: none;
+			border: none;
+			border-radius: 5px;
+			transition: .2s ease-in;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background: #6d44b8;
+		}
+
+		.text-center a {
+			color: #fff;
+			text-decoration: none;
+		}
+
+		.text-center a:hover {
+			color: #ddd;
+		}
+
+		.footer h2 {
+			color: #e0dede;
+			font-weight: 300;
+			font-size: 1rem;
+		}
+
+		.footer p{
+			color: #e0dede;
+			font-weight: 200;
+		}
+
+		.footer {
+			width: 100%;
+			background-color: #222;
+			padding: 10px;
+			text-align: center;
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="content">
+        <div class="container">
+            <form method="POST" role="form">
+                {% csrf_token %}
+                <fieldset>
+                    <img src="{% static 'login.jpg' %}" alt="Login Image">
+                    <p class="style2">Login Service Provider:</p>
+                    <div class="form-group">
+                        <input type="text" name="username" placeholder="User Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div>
+                        <button type="submit" name="submit1">Login</button>
+                    </div>
+                </fieldset>
+                <br><br>
+                <button class="btn btn-lg"><a href="{% url 'login' %}" style="color: white; text-decoration: none;">User Login</a></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer Content -->
+    <footer class="footer">
+        <h2 class="style1">An Efficient Privacy Enhancing Cross Silo Federated Learning and Applications for False Data Injection Attack Detection in Smart Grids</h2>
+        <p class="style5">privacy-preserving, federated learning, encryption, secret sharing, false data injection attack detection.</p>
+    </footer>
+</body>
+
+</html>

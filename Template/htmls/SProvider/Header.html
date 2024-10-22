@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Provider</title>
+    <link href="https://fonts.googleapis.com/css?family=Jost" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            background-color: #eee;
+            color: #fff;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-fluid {
+            padding: 50px;
+            width: 100%;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 5px 20px 50px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            text-align: center;
+            min-height: 400px; /* Ensure a minimum height */
+        }
+
+        #title {
+            color: #ece24e;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .style1 {
+            color: #5109af;
+            font-weight: bold;
+        }
+
+        .style2 {
+            font-family: 'Jost', sans-serif;
+            color: #6c0de9;
+            font-weight: bold;
+        }
+
+        .style5 {
+            color: #FF0099;
+            font-weight: bold;
+        }
+
+        input {
+            width: 80%;
+            height: 40px;
+            background: #e0dede;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 80%;
+            height: 40px;
+            margin: 10px 0;
+            color: #fff;
+            background: #573b8a;
+            font-size: 1em;
+            font-weight: bold;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            transition: .2s ease-in;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #6d44b8;
+        }
+
+        .text-center a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .text-center a:hover {
+            color: #ddd;
+        }
+
+        .footer h2 {
+            color: #e0dede;
+            font-weight: 300;
+            font-size: 1rem;
+        }
+
+        .footer p {
+            color: #e0dede;
+            font-weight: 200;
+        }
+
+        .footer {
+            width: 99%;
+            background-color: #222;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .topnav a {
+            float: left;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .topnav a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #8e4fd1;
+            color: white;
+        }
+
+        /* Table Styles */
+        .table-container {
+            max-height: 300px;
+            overflow-y: auto;
+            border-radius: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 12px;
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+            color: #302b63;
+        }
+
+        th {
+            background-color: #ff5733;
+            color: #ffffff;
+            font-weight: bold;
+            font-family: 'Righteous', cursive;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        td textarea {
+            width: 100%;
+            border: none;
+            resize: none;
+            background-color: #f9f9f9;
+            font-family: 'Jost', sans-serif;
+            color: #302b63;
+            padding: 10px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f1f1;
+        }
+
+        hr {
+            border: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        textarea {
+            width: 100%;
+            border: none;
+            resize: none;
+            background-color: #fff;
+            color: #573b8a;
+            font-size: 1em;
+            font-family: fantasy;
+        }
+
+        /* Download Icon Style */
+        .download-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #573b8a;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .download-icon:hover {
+            background-color: #6d44b8;
+
+        }
+        .tooltip-text {
+        font-size: 15px;
+        font-weight: 200;
+        visibility: hidden;
+        width: 110px;
+        background-color: #fffc33;
+        color: #2e2c2c;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%; /* Position above the button */
+        left: 50%;
+        margin-left: -80px; /* Center the tooltip */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        font-family: 'Jost', sans-serif;
+    }
+        .tooltip-text::after {
+        content: "";
+        position: absolute;
+        top: 100%; /* At the bottom of the tooltip */
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #ff5733 transparent transparent transparent;
+    }
+
+    /* Show the tooltip text when hovering over the button */
+    .download-icon:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+    }
+    </style>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+
+<h1 id="title">An Efficient Privacy Enhancing Cross-Silo Federated Learning and Applications for False Data Injection Attack Detection in Smart Grids</h1>
+
+<div class="topnav">
+    <a href="{% url 'train_model' %}">View Data Sets and Train & Test</a>
+    <a href="{% url 'likeschart' 'bar' %}">View Datasets Trained and Tested Accuracy in Bar Chart</a>
+    <a href="{% url 'charts1' 'line' %}">View Datasets Trained and Tested Accuracy Results</a>
+    <a href="{% url 'View_false_data_injection_attack_detection_Type' %}">View False Data Injection Attack Detection Type</a>
+    <a href="{% url 'View_false_data_injection_attack_detection_Ratio' %}">View False Data Injection Attack Detection Ratio</a>
+    <a href="{% url 'View_Remote_Users' %}">View All Remote Users</a>
+    <a href="{% url 'login' %}">Logout</a>
+</div>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="container">
+            {% block researchblock %}
+            <p align="center" class="text-uppercase style1">View False Data Injection Attack Detection Type Details!!!</p>
+            <hr>
+            <div class="tweettext">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>URLs</th>
+                            <th>Headline</th>
+                            <th>Body</th>
+                            <th>Prediction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for object in list_objects %}
+                        <tr>
+                            <td>{{ object.URLs }}</td>
+                            <td>{{ object.Headline }}</td>
+                            <td><textarea readonly>{{ object.Body }}</textarea></td>
+                            <td>{{ object.Prediction }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+
+<button class="download-icon" onclick="window.location.href='{% url 'Download_Trained_DataSets' %}'">
+    &#8681; <!-- Download Arrow Icon -->
+    <span class="tooltip-text">Download Predicted Data</span>
+</button>
+
+<div class="footer">
+    <p>An Efficient Privacy Enhancing Cross Silo Federated Learning and Applications for False Data Injection Attack Detection in Smart Grids</p>
+</div>
+
+</body>
+</html>

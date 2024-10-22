@@ -1,0 +1,111 @@
+{% extends 'SProvider/Header.html' %}
+{% block researchblock %}
+
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: 'Jost', sans-serif;
+        background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+        color: #fff;
+    }
+
+
+    .heading {
+        text-align: center;
+        font-family: 'Righteous', cursive;
+        font-size: 2em;
+        color: #573b8a;
+        margin-bottom: 20px;
+    }
+
+    .table-container {
+        width: 95%;
+        max-height: 350px;
+        border-radius: 8px;
+    }
+
+    table {
+        width: 100%;
+        max-width: 1000px;
+        border-collapse: collapse;
+        text-align: center;
+        table-layout: fixed; /* Prevents table from exceeding container width */
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 16px;
+        border-bottom: 1px solid #ddd;
+        color: #302b63;
+        word-wrap: break-word;
+    }
+
+    th {
+        background-color: #ff5733;
+        color: #ffffff;
+        font-weight: bold;
+        font-family: 'Righteous', cursive;
+    }
+
+    td {
+        background-color: #f9f9f9;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f1f1f1;
+    }
+
+    hr {
+        border: 1px solid #ccc;
+        margin: 20px 0;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 20px;
+        }
+
+        th, td {
+            font-size: 14px;
+        }
+
+        .heading {
+            font-size: 1.5em;
+        }
+    }
+</style>
+
+        <p class="heading">False Data Injection Attack Detection</p>
+        <hr>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>URLs</th>
+                        <th>Headline</th>
+                        <th>Body</th>
+                        <th>Prediction Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for object in list_objects %}
+                    <tr>
+                        <td>{{ object.URLs }}</td>
+                        <td>{{ object.Headline }}</td>
+                        <td><textarea readonly>{{ object.Body }}</textarea></td>
+                        <td>{{ object.Prediction }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+{% endblock %}

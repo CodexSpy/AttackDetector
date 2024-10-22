@@ -1,0 +1,165 @@
+{% extends 'RUser/design.html' %}
+{% block userblock %}
+
+<link rel="icon" href="images/icon.png" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: 'Jost', sans-serif;
+        background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    }
+    .main {
+        width: 400px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 5px 20px 50px #000;
+        padding: 30px;
+        text-align: center;
+    }
+    .footer {
+        width: 100%;
+        background-color: #222;
+        padding: 20px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        color: white;
+    }
+    label {
+        color: #573b8a;
+        font-size: 1.8em;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    input {
+        width: 80%;
+        height: 40px;
+        background: #e0dede;
+        margin: 10px 0;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
+    button {
+        width: 80%;
+        height: 40px;
+        margin: 10px 0;
+        color: #fff;
+        background: #573b8a;
+        font-size: 1em;
+        font-weight: bold;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        transition: .2s ease-in;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #6d44b8;
+    }
+    .text-center a {
+        color: #fff;
+        text-decoration: none;
+    }
+    .text-center a:hover {
+        color: #ddd;
+    }
+    .container {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 5px 20px 50px #000;
+        padding: 30px;
+        width: 600px;
+    }
+    .style1 {
+        color: #573b8a;
+        font-size: 1.8em;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .style2 {
+        color: #573b8a;
+        font-weight: bold;
+    }
+    .style7 {
+        color: #573b8a;
+    }
+    .style9 {
+        color: #000000;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    td {
+        padding: 10px;
+    }
+    td[bgcolor="#FF0000"] {
+        background-color: #573b8a;
+        color: #fff;
+    }
+    .header-row td {
+        background-color: #573b8a;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table align="center">
+                        <tr class="header-row">
+                            <td colspan="4">User Information</td>
+                        </tr>
+                        <tr>
+                            <td width="20%"><span class="style2">Username</span></td>
+                            <td width="30%"><span class="style9">{{object.username}}</span></td>
+                            <td width="20%"><span class="style7 style2">Email Id</span></td>
+                            <td width="30%"><span class="style9">{{object.email}}</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="style2">Mobile Number</span></td>
+                            <td><span class="style9">{{object.phoneno}}</span></td>
+                            <td><span class="style7 style2">Gender</span></td>
+                            <td><span class="style9">{{object.gender}}</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="style2">Address</span></td>
+                            <td><span class="style9">{{object.address}}</span></td>
+                            <td><span class="style7 style2">Country</span></td>
+                            <td><span class="style9">{{object.country}}</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="style2">State</span></td>
+                            <td><span class="style9">{{object.state}}</span></td>
+                            <td><span class="style7 style2">City</span></td>
+                            <td><span class="style9">{{object.city}}</span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">&nbsp;</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2024 Your Company. All rights reserved.
+    </div>
+{% endblock %}

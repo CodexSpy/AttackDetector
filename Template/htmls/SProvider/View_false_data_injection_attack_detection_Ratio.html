@@ -1,0 +1,137 @@
+{% extends 'SProvider/Header.html' %}
+{% block researchblock %}
+
+<link rel="icon" href="images/icon.png" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: 'Jost', sans-serif;
+        background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+        color: #fff;
+    }
+
+
+    .heading {
+        text-align: center;
+        font-family: 'Righteous', cursive;
+        font-size: 2em;
+        color: #573b8a;
+        margin-bottom: 20px;
+    }
+
+    .table-container {
+        max-height: 300px;
+        overflow-y: auto; /* Allow vertical scroll if content exceeds height */
+        border-radius: 5px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1000px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        table-layout: fixed; /* Ensures the table fits within the container */
+    }
+
+    th, td {
+        padding: 10px;
+        font-size: 16px;
+        border-bottom: 1px solid #ddd;
+        color: #302b63;
+        word-wrap: break-word; /* Ensure content wraps */
+    }
+
+    th {
+        background-color: #ff5733;
+        color: #ffffff;
+        font-family: 'Righteous', cursive;
+    }
+
+    td {
+        background-color: #f9f9f9;
+        color: #302b63;
+    }
+
+    .prediction-type {
+        color: red;
+        font-size: 20px;
+        font-family: fantasy;
+    }
+
+    .ratio-value {
+        background-color: #a8ebda;
+        font-family: monospace;
+        font-size: 19px;
+        color: #424141;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f1f1f1;
+    }
+
+    tr td {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .no-data {
+        color: rgb(76, 72, 72);
+        font-size: 20px;
+        font-family: fantasy;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 20px;
+        }
+
+        th, td {
+            font-size: 14px;
+        }
+
+        .heading {
+            font-size: 1.5em;
+        }
+    }
+</style>
+
+<body>
+            <form role="form" method="POST">
+                {% csrf_token %}
+                <fieldset>
+                    <p class="heading">View False Data Injection Attack Detection Found Ratio Details</p>
+                    <hr>
+                    <div class="table-container">
+                        <table>
+                            <tr>
+                                <th>Prediction Type</th>
+                                <th>Ratio</th>
+                            </tr>
+                            {% for object in objs %}
+                            <tr>
+                                <td class="prediction-type">{{object.names}}</td>
+                                <td class="ratio-value">{{object.ratio}}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="2" class="no-data">No data available</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </fieldset>
+            </form>
+
+</body>
+
+{% endblock %}

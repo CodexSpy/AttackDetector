@@ -1,0 +1,94 @@
+{% extends 'SProvider/Header.html' %}
+{% block researchblock %}
+
+<style>
+    body {
+        background-color: #FFFFFF;
+        margin: 0; /* Remove default margin */
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center elements horizontally */
+        justify-content: flex-start; /* Align items to the top */
+    }
+
+    .menu {
+        display: flex; /* Create a flex container */
+        justify-content: center; /* Center the menu items */
+        margin: 20px 0; /* Margin around the menu */
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: rgb(248, 241, 201); /* Color for links */
+        margin: 0 15px; /* Space between menu items */
+        padding: 10px 20px; /* Padding for clickable area */
+        background-color: #584b4f; /* Background color for buttons */
+        border-radius: 5px; /* Rounded corners */
+        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+    .menu a:hover {
+        background-color: rgb(0, 0, 0); /* Change background color on hover */
+        color: white; /* Change text color on hover */
+    }
+
+    #chartContainer {
+        width: 1000px; /* Set a wider width for the chart */
+        height: 300px; /* Reduce the height of the chart */
+        margin: 20px 0; /* Spacing above and below */
+    }
+
+    .topic {
+        text-align: center; /* Center the title */
+        margin-bottom: 20px; /* Space below the title */
+    }
+
+    h1 {
+        color: white; /* Title color */
+        padding: 2px; /* Padding for title */
+        margin: 0; /* Remove margin for title */
+    }
+</style>
+
+<script>
+window.onload = function() {
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        title: {
+            text: ""
+        },
+        data: [{
+            {% if chart_type == "line" %}
+                type: "line",
+            {% elif chart_type == "pie" %}
+                type: "pie",
+            {% elif chart_type == "spline" %}
+                type: "spline",
+            {% endif %}
+            startAngle: 240,
+            yValueFormatString: "##0.00\"%\"",
+            indexLabel: "{label} {y}",
+            dataPoints: [
+                {% for o in form %}
+                    {y: {{o.dcount}}, label: "{{o.names}}"},
+                {% endfor %}
+            ]
+        }]
+    });
+    chart.render();
+}
+</script>
+
+<body>
+    <div class="topic">
+        <h1>Chart Type: {{ chart_type|title }}</h1> <!-- Display the chart type -->
+    </div>
+    <div class="menu">
+        <a href="{% url 'charts' 'pie' %}">PIE CHART</a>
+        <a href="{% url 'charts' 'line' %}">LINE CHART</a>
+        <a href="{% url 'charts' 'spline' %}">SPLINE CHART</a>
+    </div>
+    <div id="chartContainer" class="graph"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+{% endblock %}

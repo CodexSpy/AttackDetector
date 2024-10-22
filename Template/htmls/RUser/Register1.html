@@ -1,0 +1,211 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Register Your Details</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      
+      min-height: 100vh;
+      font-family: 'Jost', sans-serif;
+      background: linear-gradient(to bottom, #625ba1, #403a88, #393975);
+    }
+
+    .container {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 5px 20px 50px #000;
+      margin-top: 30px;
+      width: 1000px;
+      height: 88vh;
+      max-width: 100%;
+      color: rgb(97, 94, 94);
+      padding: 20px; /* Added padding for spacing */
+      overflow: auto;/* Ensures overflow content is hidden */
+    }
+
+    .text-uppercase {
+      font-family: 'Righteous', cursive;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      width: 100%;
+      background: #573b8a;
+      border: none;
+      color: #fff;
+      padding: 10px;
+      font-size: 20px;
+    letter-spacing: 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: #6d44b8;
+    }
+
+    .text-center a {
+      color: #af8eee;
+      text-decoration: none;
+    }
+
+    .text-center a:hover {
+      color: #6d44b8;
+    }
+
+    .footer {
+      width: 100%;
+      background-color: #222;
+      max-height: 80px;
+      height: 60px;
+      padding: 5px;
+      text-align: center;
+      position: fixed;
+      bottom: -3;
+      left: 0;
+      color: white;
+    }
+
+    .footer h2 {
+      font-family: 'Jost', sans-serif;
+      color: #ebe4e4;
+      font-weight: bold;
+      font-weight: 300;
+      font-size: 1rem;
+    }
+
+    .footer p {
+      font-family: 'Righteous', cursive;
+      color: #FF0000;
+      font-weight: bold;
+    }
+
+    .row .col-md-6 {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .status {
+      margin-top: 20px;
+      background-color: #e4e277;
+      color: rgb(27, 26, 26);
+      text-align: center;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .status strong {
+      font-size: 1.1em;
+    }
+
+   .image-1{
+width: 350px;
+height: 80px;
+display: block;
+margin: 0 auto;
+padding: 12px;
+border-radius: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div>
+      <img class="image-1" src="{% static 'Register.png' %}" alt="RegisterHere">
+    </div>
+    <form role="form" method="POST">
+      {% csrf_token %}
+      <fieldset>
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <label class="text-uppercase" for="username">Enter Username</label>
+            <input type="text" name="username" id="username" placeholder="User Name" required="required" />
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="text-uppercase" for="password">Enter Password</label>
+            <input type="password" name="password" id="password" placeholder="Password" required="required" />
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="text-uppercase" for="email">Enter EMail Id</label>
+            <input type="email" name="email" id="email" placeholder="Enter Email" required="required" />
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="text-uppercase" for="address">Enter Address</label>
+            <textarea name="address" id="address" placeholder="Enter Address"></textarea>
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="text-uppercase" for="gender">Enter Gender</label>
+            <select name="gender" id="gender">
+              <option>----Select Gender----</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="text-uppercase" for="phoneno">Enter Mobile Number</label>
+            <input type="number" name="phoneno" id="phoneno" placeholder="Enter Mobile Number" required="required" />
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="text-uppercase" for="country">Enter Country Name</label>
+            <input type="text" name="country" id="country" placeholder="Enter Country Name" required="required" />
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="text-uppercase" for="state">Enter State Name</label>
+            <input type="text" name="state" id="state" placeholder="Enter State Name" required="required" />
+          </div>
+          <div class="col-md-6 form-group">
+            <label class="text-uppercase" for="city">Enter City Name</label>
+            <input type="text" name="city" id="city" placeholder="Enter City Name" required="required" />
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" name="submit" value="Register" />
+        </div>
+      </fieldset>
+    </form>
+    <div class="status">
+      <strong>Registered Status: </strong>{{object}}
+    </div>
+    <p class="text-center">
+      <span class="style12 style3 style10">
+        <a href="{% url 'login' %}">Remote User</a> | <a href="{% url 'serviceproviderlogin' %}">Service Provider</a>
+      </span>
+    </p>
+  </div>
+  <div class="footer">
+    <h2>An Efficient Privacy Enhancing Cross-Silo Federated Learning and Applications for False Data Injection Attack Detection in Smart Grids</h2>
+    <p>
+      <small id="passwordHelpInline" class="text-muted">privacy-preserving, federated learning, encryption, secret sharing, false data injection attack detection.</small>
+    </p>
+  </div>
+</body>
+
+</html>

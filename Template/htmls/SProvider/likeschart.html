@@ -1,0 +1,62 @@
+{% extends 'SProvider/Header.html' %}
+{% block researchblock %}
+
+<style>
+    body {
+        background-color: #FFFFFF;
+        margin: 0; /* Remove default margin */
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center elements horizontally */
+    }
+
+    .topic {
+        text-align: center; /* Center the title */
+        margin-bottom: 20px; /* Space below the title */
+    }
+
+    .topic h1 {
+        color: white; /* Title color */
+        padding: 10px; /* Padding for title */
+        margin: 0; /* Remove margin for title */
+        background-color: #573b8a; /* Background color for the title */
+        border-radius: 8px; /* Rounded corners for title */
+    }
+
+    #chartContainer {
+        width: 1000px; /* Set a wider width for the chart */
+        height: 400px; /* Set a suitable height for the chart */
+        margin: 20px 0; /* Spacing above and below */
+    }
+</style>
+
+<script>
+window.onload = function() {
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        title: {
+            text: "Bar Chart Visualization" // Set an appropriate title
+        },
+        data: [{
+            type: "bar", // Set chart type to bar
+            yValueFormatString: "##0.00\"%\"",
+            indexLabel: "{label} {y}",
+            dataPoints: [
+                {% for o in form %}
+                    { y: {{ o.dcount }}, label: "{{ o.names }}" },
+                {% endfor %}
+            ]
+        }]
+    });
+    chart.render();
+}
+</script>
+
+<body>
+    <div class="topic">
+        <h1>Bar Chart Visualization</h1> <!-- Main title -->
+    </div>
+    <div id="chartContainer" class="graph"></div> <!-- Container for the chart -->
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+{% endblock %}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remote User</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+  <style>
+ @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+body {
+    background: url("{% static 'bg.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Merriweather', sans-serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+.topnav {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: right;
+    background-color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.topnav a {
+    color: #ffffff;
+    text-align: justify;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.topnav a:hover {
+    background-color: #575757;
+    color: #ffffff;
+}
+
+.topnav a.active {
+    background-color: #8e4fd1;
+    color: #ffffff;
+}
+
+.mainholder {
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+}
+
+footer h1 {
+    color: #e9f53ff5;
+    font-size: 1em;
+    font-weight: 300;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+  </style>
+    <div class="topnav">
+        <a href="{% url 'Predict_false_data_injection_attack_detection' %}">Predict False Data Injection Attack Type</a>
+        <a href="{% url 'ViewYourProfile' %}">View Your Profile</a>
+        <a href="{% url 'login' %}">Logout</a>
+    </div>
+    <div class="mainholder">
+        {% block userblock %}
+        {% endblock %}
+    </div>
+    <footer>
+        <h1>An Efficient Privacy Enhancing Cross Silo Federated Learning and Applications for False Data Injection Attack Detection in Smart Grids</h1>
+    </footer>
+</body>
+</html>
+

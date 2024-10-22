@@ -1,0 +1,144 @@
+{% extends 'SProvider/Header.html' %}
+
+{% block researchblock %}
+
+<link rel="icon" href="images/icon.png" type="image/x-icon" />
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', sans-serif;
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    color: #fff;
+}
+
+
+.text-uppercase {
+    font-family: 'Righteous', cursive;
+}
+
+input {
+    font-family: 'Russo One', sans-serif;
+    font-size: 15px;
+}
+
+.style1 {
+    color: #FF0000;
+}
+
+.viewclients {
+    max-height: 300px; /* Set a max height for the table */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    margin-top: 20px; /* Add margin for spacing */
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center the table horizontally */
+    align-items: center; /* Center the table vertically */
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+    width: 95%; /* Allow the table to take its natural width */
+}
+
+th, td {
+    padding: 12px;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    color: #302b63;
+}
+
+th {
+    background-color: #ff5733;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Righteous', cursive;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+td textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    background-color: #f9f9f9;
+    font-family: 'Jost', sans-serif;
+    color: #302b63;
+    padding: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+hr {
+    border: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 20px;
+    }
+    th, td {
+        font-size: 14px;
+    }
+    .heading {
+        font-size: 1.5em;
+    }
+}
+</style>
+
+<body>
+        <div class="row">
+            <div class="col-md-5">
+                <form role="form" method="POST">
+                    {% csrf_token %}
+                    <fieldset>
+                        <p class="text-uppercase pull-center style1">ACTIVE REMOTE USERS</p>
+                        <div class="viewclients">
+                            <table>
+                                <tr>
+                                    <th>USER NAME</th>
+                                    <th>EMAIL</th>
+                                    <th>Gender</th>
+                                    <th>Address</th>
+                                    <th>Mob No</th>
+                                    <th>Country</th>
+                                    <th>State</th>
+                                    <th>City</th>
+                                </tr>
+                                {% for o in objects %}
+                                <tr>
+                                    <td><span class="style1">{{ o.username }}</span></td>
+                                    <td><span class="style1">{{ o.email }}</span></td>
+                                    <td><span class="style1">{{ o.gender }}</span></td>
+                                    <td><span class="style1">{{ o.address }}</span></td>
+                                    <td><span class="style1">{{ o.phoneno }}</span></td>
+                                    <td><span class="style1">{{ o.country }}</span></td>
+                                    <td><span class="style1">{{ o.state }}</span></td>
+                                    <td><span class="style1">{{ o.city }}</span></td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="col-md-2">
+                <!-------null------>
+            </div>
+        </div>
+   
+
+{% endblock %}
